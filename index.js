@@ -28,6 +28,13 @@ function createItem(item) {
   const duplicateButton = clone.querySelector(".to-do__item-button_type_duplicate");
   const editButton = clone.querySelector(".to-do__item-button_type_edit");
 
+	deleteButton.addEventListener("click", (event) => {
+		clone.remove();
+		
+		const items = getTasksFromDOM()
+		saveTasks(items);
+	})
+
 	textElement.textContent = item;
 
 	return clone;
@@ -53,7 +60,7 @@ items.forEach(item => {
 	listElement.append(createItem(item));
 })
 
-formElement.addEventListener('submit', (event) => {
+formElement.addEventListener("submit", (event) => {
 	event.preventDefault();
 
 	const taskText = inputElement.value;
