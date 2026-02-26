@@ -85,7 +85,11 @@ items.forEach(item => {
 formElement.addEventListener("submit", (event) => {
 	event.preventDefault();
 
-	const taskText = inputElement.value;
+	const taskText = inputElement.value.trim();
+	if (!taskText) {
+		return;
+	}
+
 	const newItem = createItem(taskText);
 	listElement.prepend(newItem);
 
